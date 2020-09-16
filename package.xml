@@ -1,0 +1,26 @@
+<package>
+  <name>ros_qr_merger</name>
+  <version>1.0.0</version>
+  <description>
+    Merge multiple QR matches from multiple video streams.
+  </description>
+  <maintainer email="dario.mengoli@gmail.com">Dario Mengoli</maintainer>
+  <license>MIT</license>
+  <url>https://github.com/shedino/ros_qr_merger</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>message_generation</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>zbar</build_depend>
+  <build_depend>rostest</build_depend>
+  <build_depend>ros_qr_tracker</build_depend>
+
+  <run_depend>message_runtime</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>ros_qr_tracker</run_depend>
+  
+  <test_depend>rosunit</test_depend>
+</package>

@@ -1,0 +1,27 @@
+<launch>
+
+  <node name="usb_cam_node1" pkg="cv_camera" type="cv_camera_node">
+    <param name="device_id" value="/dev/video0" />
+    <param name="rate" value="10" />
+  </node>
+
+  <param name="qr_tracker_node1/topic" value="/usb_cam_node1/image_raw/compressed" />
+  <param name="qr_tracker_node1/focal_length" value="550.0" />
+  <param name="qr_tracker_node1/img_scale_x" value="0.0010" />
+  <param name="qr_tracker_node1/img_scale_y" value="0.0005" />
+  <param name="qr_tracker_node1/marker_size" value="154" />
+  
+
+  <param name="qr_tracker_node2/topic" value="/usb_cam_node2/image_raw/compressed" />
+  <param name="qr_tracker_node2/focal_length" value="550.0" />
+  <param name="qr_tracker_node2/img_scale_x" value="0.0010" />
+  <param name="qr_tracker_node2/img_scale_y" value="0.0005" />
+  <param name="qr_tracker_node2/marker_size" value="154" />
+
+  <node name="qr_tracker_node1" pkg="ros_qr_tracker" type="qr_tracker.py"/>
+  <node name="qr_tracker_node2" pkg="ros_qr_tracker" type="qr_tracker.py"/>
+
+  <param name="qr_merger_node/match1topic" value="/qr_tracker_node1/matches" />
+  <param name="qr_merger_node/match2topic" value="/qr_tracker_node2/matches" />
+  <node name="qr_merger_node" pkg="ros_qr_merger" type="qr_merger.py"/>
+</launch>
